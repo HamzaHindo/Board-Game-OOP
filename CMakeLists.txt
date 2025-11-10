@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
-project(BoardGame)
+project(BoardGames)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(BoardGame main.cpp)
+# Gather all cpp files recursively in src
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+add_executable(BoardGames ${SOURCES})
