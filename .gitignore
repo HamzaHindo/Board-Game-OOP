@@ -37,5 +37,18 @@
 *.out
 *.app
 
-# debug information files
+# Debug information files
 *.dwo
+
+# Visual Studio folders and files
+.vs/
+*.vcxproj.user
+*.vcxproj.filters
+*.sdf
+*.opensdf
+*.ipch
+*.VC.db
+*.VC.VC.opendb
+
+# Build/output folder
+out/
