@@ -9,7 +9,7 @@ using namespace std;
 
 //--------------------------------------- X_O_Board Implementation
 
-X_O_Board::X_O_Board() : Board(3, 3) {
+X_O_Board::X_O_Board() : Board(3, 3), GameInfo("Tic Tac Toe", 3, "This is a Tic Tac Toe Game") {
     // Initialize all cells with blank_symbol
     for (auto& row : board)
         for (auto& cell : row)
