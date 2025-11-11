@@ -196,6 +196,12 @@ public:
         cout << message << endl;
     }
 
+
+    // I asked the doctor to add this constructor and he agreed.
+    UI(int cell_display_width)
+        : cell_width(cell_display_width) {}
+
+
     virtual ~UI() {}
 
     /** @brief Display any message to the user. */
