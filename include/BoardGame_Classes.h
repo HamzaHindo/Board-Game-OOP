@@ -240,6 +240,8 @@ public:
     }
 };
 
+
+
 //-----------------------------------------------------
 /**
  * @brief Controls the flow of a board game between two players.

@@ -12,7 +12,7 @@ include_directories(include)
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 # Define executable with all source files
-add_executable(BoardGames ${SOURCES} "src/main.cpp")
+add_executable(BoardGames ${SOURCES})
 
 # (Optional) You can add warnings or other compile options, e.g.:
 # target_compile_options(BoardGames PRIVATE /W4)  # MSVC warning level 4
