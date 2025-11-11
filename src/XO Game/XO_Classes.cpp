@@ -9,7 +9,7 @@ using namespace std;
 
 //--------------------------------------- X_O_Board Implementation
 
-X_O_Board::X_O_Board() : Board(3, 3), GameInfo("Tic Tac Toe", 3, "This is a Tic Tac Toe Game") {
+X_O_Board::X_O_Board() : Board(3, 3) {
     // Initialize all cells with blank_symbol
     for (auto& row : board)
         for (auto& cell : row)
@@ -70,7 +70,7 @@ bool X_O_Board::game_is_over(Player<char>* player) {
 
 //--------------------------------------- XO_UI Implementation
 
-XO_UI::XO_UI() : UI<char>("Weclome to FCAI X-O Game by Dr El-Ramly", 3) {}
+XO_UI::XO_UI() : UI<char>("", 3) {}
 
 Player<char>* XO_UI::create_player(string& name, char symbol, PlayerType type) {
     // Create player based on type
@@ -92,4 +92,27 @@ Move<char>* XO_UI::get_move(Player<char>* player) {
         y = rand() % player->get_board_ptr()->get_columns();
     }
     return new Move<char>(x, y, player->get_symbol());
+}
+
+
+XO::XO(): IGame("Tic Tac Toe", 3, "This is a Tic Tac Toe Game") {}
+
+XO::~XO() {
+    delete board;
+    delete ui;
+}
+
+void XO::runGame() {
+
+    descripe();
+    Player<char>** players = ui->setup_players();
+    // Create the game manager with the board and the array of players.
+    GameManager<char> game(board, players, ui);
+    // Run the game loop.
+    game.run();
+
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+    delete[] players;
 }

@@ -11,6 +11,7 @@
 #define XO_CLASSES_H
 
 #include "BoardGame_Classes.h"
+#include "IGame.h"
 using namespace std;
 
 /**
@@ -108,6 +109,19 @@ public:
      * @return A pointer to a new `Move<char>` object representing the player's action.
      */
     virtual Move<char>* get_move(Player<char>* player);
+};
+
+ 
+class XO : public IGame {
+
+    XO_UI* ui = new XO_UI;
+
+    X_O_Board* board = new X_O_Board;
+
+public:
+    XO();
+    ~XO();
+    void runGame() override;
 };
 
 #endif // XO_CLASSES_H
