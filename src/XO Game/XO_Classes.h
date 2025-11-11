@@ -111,7 +111,7 @@ public:
     virtual Move<char>* get_move(Player<char>* player);
 };
 
- 
+
 class XO : public IGame {
 
     XO_UI* ui = new XO_UI;
