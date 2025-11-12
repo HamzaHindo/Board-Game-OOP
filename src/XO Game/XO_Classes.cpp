@@ -95,7 +95,7 @@ Move<char>* XO_UI::get_move(Player<char>* player) {
 }
 
 
-XO::XO(): IGame("Tic Tac Toe", 3, "This is a Tic Tac Toe Game") {}
+XO::XO() {}
 
 XO::~XO() {
     delete board;
@@ -116,3 +116,23 @@ void XO::runGame() {
     }
     delete[] players;
 }
+
+std::string XO::getName() const {
+     return "Tic Tac Toe";
+}
+
+std::string XO::getDesc() const {
+    return "Tic Tac Toe Battle - the classic game that tests your mind and quick thinking!\nChallenge your friend or play against the computer, and try to be the first to line up three symbols in a row.\nCan you outsmart your opponent and claim victory?";
+}
+
+std::pair<int, int> XO::getBoardSize() const {
+    return {3, 3};
+}
+
+void XO::descripe() const {
+    std::cout << getDesc() << '\n';
+    std::cout << "Board Size: ( " << getBoardSize().first << ", " << getBoardSize().second << " ).\n\n";
+}
+
+
+

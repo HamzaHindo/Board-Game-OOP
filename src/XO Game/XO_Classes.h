@@ -76,7 +76,7 @@ public:
  * @brief User Interface class for the X-O (Tic-Tac-Toe) game.
  *
  * Inherits from the generic `UI<char>` base class and provides
- * X-O–specific functionality for player setup and move input.
+ * X-Oï¿½specific functionality for player setup and move input.
  *
  * @see UI
  */
@@ -122,6 +122,10 @@ public:
     XO();
     ~XO();
     void runGame() override;
+    std::string getName() const override;
+    std::string getDesc() const override;
+    std::pair<int, int> getBoardSize() const override;
+    void descripe() const override;
 };
 
 #endif // XO_CLASSES_H

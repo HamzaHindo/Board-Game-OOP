@@ -10,5 +10,4 @@ public:
 	Menu(const std::vector<std::shared_ptr<IGame>> games);
 
 	void runMenuLoop();
-
 };
