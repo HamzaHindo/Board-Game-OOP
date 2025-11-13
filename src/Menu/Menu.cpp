@@ -37,7 +37,5 @@ void Menu::runMenuLoop() {
     }
   }
 
-  if (choice == 1) {
-    games[choice - 1]->runGame();
-  }
+  games[choice - 1]->runGame();
 }

@@ -7,13 +7,11 @@
  * dynamically allocated objects are properly deleted at the end.
  */
 
-#include "BoardGame_Classes.h"
 #include "Menu/Menu.h"
-#include <iostream> // Required for input/output operations (cout, cin)
-#include <memory>   // Required for unique_ptr
-#include <string>   // Required for string
-#include <vector>   // Required for vector
+#include <memory> // Required for unique_ptr
+#include <vector> // Required for vector
 
+#include "Numerical_TicTacToe/Numerical_TicTacToe.h"
 #include "XO Game/XO_Classes.h"
 
 int main() {
@@ -23,6 +21,7 @@ int main() {
   std::vector<std::shared_ptr<IGame>> games;
 
   games.push_back(std::make_shared<XO>());
+  games.push_back(std::make_shared<NumericalTicTacToe>());
 
   Menu menu(games);
 
