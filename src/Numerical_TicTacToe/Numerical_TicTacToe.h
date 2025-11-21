@@ -34,6 +34,7 @@ public:
   ~Numerical_UI() {}
   Player<int> *create_player(string &name, int symbol, PlayerType type);
   virtual Move<int> *get_move(Player<int> *player);
+  Player<int> **setup_players();
 
 private:
   bool is_valid_number(int number, bool is_player1) const;

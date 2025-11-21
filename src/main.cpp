@@ -13,6 +13,7 @@
 
 #include "Numerical_TicTacToe/Numerical_TicTacToe.h"
 #include "XO Game/XO_Classes.h"
+#include "word_TicTacToe/word_tic_tac_toe.h"
 
 int main() {
 
@@ -22,6 +23,7 @@ int main() {
 
   games.push_back(std::make_shared<XO>());
   games.push_back(std::make_shared<NumericalTicTacToe>());
+  games.push_back(std::make_shared<Word_TTT>());
 
   Menu menu(games);
 
