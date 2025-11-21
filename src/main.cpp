@@ -8,6 +8,7 @@
  */
 
 #include "Menu/Menu.h"
+#include <limits>
 #include <memory> // Required for unique_ptr
 #include <vector> // Required for vector
 
@@ -17,6 +18,7 @@
 
 int main() {
 
+  cin.exceptions(std::ios::failbit | std::ios::badbit);
   srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
 
   std::vector<std::shared_ptr<IGame>> games;
