@@ -126,6 +126,8 @@ bool Numerical_UI::is_valid_number(int number, bool is_player1) const {
   }
 }
 
+Player<int> **Numerical_UI::setup_players() { return new Player<int> *[2]; }
+
 Move<int> *Numerical_UI::get_move(Player<int> *player) {
   bool is_player1 = (player->get_symbol() == 1);
   Numerical_Board *num_board =
