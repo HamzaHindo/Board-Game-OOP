@@ -1,8 +1,10 @@
 #include "word_tic_tac_toe.h"
 #include <cctype> // for toupper()
 #include <cstdio>
+#include <exception>
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <string>
 
 using namespace std;
@@ -106,9 +108,34 @@ Move<char> *Word_TTT_UI::get_move(Player<char> *player) {
   char c;
 
   if (player->get_type() == PlayerType::HUMAN) {
-    cout << "\nPlease enter your move x, y (0 to 2) and a letter (a to z): ";
-    cin >> x >> y >> c;
+
+    while (true) {
+      try {
+        cout
+            << "\nPlease enter your move x, y (0 to 2) and a letter (a to z): ";
+        cin >> x >> y;
+
+        string buffer;
+        cin >> buffer;
+
+        if (buffer.size() != 1)
+          throw runtime_error("Input must be exactly one character.");
+
+        c = buffer[0];
+
+        if (!isalpha(static_cast<unsigned char>(c)))
+          throw runtime_error("Character must be or a-z.");
+
+        break;
+      } catch (const std::exception &e) {
+        cout << "Invalid input: " << e.what() << ", try again.\n";
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      }
+    }
+
   } else if (player->get_type() == PlayerType::COMPUTER) {
+
     x = rand() % player->get_board_ptr()->get_rows();
     y = rand() % player->get_board_ptr()->get_columns();
   }
