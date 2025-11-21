@@ -15,7 +15,7 @@
 #include "Numerical_TicTacToe/Numerical_TicTacToe.h"
 #include "XO Game/XO_Classes.h"
 #include "word_TicTacToe/word_tic_tac_toe.h"
-
+#include "FourInARow.h"
 int main() {
 
   cin.exceptions(std::ios::failbit | std::ios::badbit);
@@ -26,7 +26,7 @@ int main() {
   games.push_back(std::make_shared<XO>());
   games.push_back(std::make_shared<NumericalTicTacToe>());
   games.push_back(std::make_shared<Word_TTT>());
-
+  games.push_back(std::make_shared<FourInARow>());
   Menu menu(games);
 
   menu.runMenuLoop();
