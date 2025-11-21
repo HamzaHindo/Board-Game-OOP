@@ -1,7 +1,3 @@
-/* What I changed in the lib:
- * UI(int cell_display_width) : cell_width(cell_display_width) {}
- * */
-
 #ifndef _BOARDGAME_CLASSES_H
 #define _BOARDGAME_CLASSES_H
 
