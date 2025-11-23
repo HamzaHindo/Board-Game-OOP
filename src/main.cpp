@@ -24,11 +24,13 @@ int main() {
 
   std::vector<std::shared_ptr<IGame>> games;
 
-  games.push_back(std::make_shared<XO>());
-  games.push_back(std::make_shared<NumericalTicTacToe>());
-  games.push_back(std::make_shared<Word_TTT>());
-  games.push_back(std::make_shared<FourInARow>());
-  games.push_back(std::make_shared<SUS>());
+  games.push_back(std::make_shared<SUS>());        // 1
+  games.push_back(std::make_shared<FourInARow>()); // 2
+  // games.push_back(std::make_shared<Five_TTT>()); // 3
+  games.push_back(std::make_shared<Word_TTT>()); // 4
+  // games.push_back(std::make_shared<Diamond_TTT>());  // 6
+  games.push_back(std::make_shared<NumericalTicTacToe>()); // 9
+  games.push_back(std::make_shared<XO>());                 // Demo
   Menu menu(games);
 
   menu.runMenuLoop();
