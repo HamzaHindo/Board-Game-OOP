@@ -12,10 +12,16 @@
 #include <memory> // Required for unique_ptr
 #include <vector> // Required for vector
 
+#include "FourInARow/FourInARow.h"
 #include "Numerical_TicTacToe/Numerical_TicTacToe.h"
+#include "SUS Game/SUS_Game.h"
 #include "XO Game/XO_Classes.h"
 #include "word_TicTacToe/word_tic_tac_toe.h"
+<<<<<<< HEAD
 #include "FourInARow.h"
+#include "ObstaclesTicTacToe.h"
+=======
+>>>>>>> f5b95782314a0d3aeb6cb4eab06c7f9fadd5990f
 int main() {
 
   cin.exceptions(std::ios::failbit | std::ios::badbit);
@@ -23,10 +29,21 @@ int main() {
 
   std::vector<std::shared_ptr<IGame>> games;
 
+<<<<<<< HEAD
   games.push_back(std::make_shared<XO>());
   games.push_back(std::make_shared<NumericalTicTacToe>());
   games.push_back(std::make_shared<Word_TTT>());
   games.push_back(std::make_shared<FourInARow>());
+  games.push_back(std::make_shared<ObstaclesTicTacToe>());
+=======
+  games.push_back(std::make_shared<SUS>());        // 1
+  games.push_back(std::make_shared<FourInARow>()); // 2
+  // games.push_back(std::make_shared<Five_TTT>()); // 3
+  games.push_back(std::make_shared<Word_TTT>()); // 4
+  // games.push_back(std::make_shared<Diamond_TTT>());  // 6
+  games.push_back(std::make_shared<NumericalTicTacToe>()); // 9
+  games.push_back(std::make_shared<XO>());                 // Demo
+>>>>>>> f5b95782314a0d3aeb6cb4eab06c7f9fadd5990f
   Menu menu(games);
 
   menu.runMenuLoop();
