@@ -14,6 +14,7 @@
 
 #include "FourInARow/FourInARow.h"
 #include "Numerical_TicTacToe/Numerical_TicTacToe.h"
+#include "ObstacleTicTacToe/ObstaclesTicTacToe.h"
 #include "SUS Game/SUS_Game.h"
 #include "XO Game/XO_Classes.h"
 #include "word_TicTacToe/word_tic_tac_toe.h"
@@ -24,12 +25,11 @@ int main() {
 
   std::vector<std::shared_ptr<IGame>> games;
 
-  games.push_back(std::make_shared<SUS>());        // 1
-  games.push_back(std::make_shared<FourInARow>()); // 2
-  // games.push_back(std::make_shared<Five_TTT>()); // 3
-  games.push_back(std::make_shared<Word_TTT>()); // 4
-  // games.push_back(std::make_shared<Diamond_TTT>());  // 6
+  games.push_back(std::make_shared<SUS>());                // 1
+  games.push_back(std::make_shared<FourInARow>());         // 2
+  games.push_back(std::make_shared<Word_TTT>());           // 4
   games.push_back(std::make_shared<NumericalTicTacToe>()); // 9
+  games.push_back(std::make_shared<ObstaclesTicTacToe>()); // 10
   games.push_back(std::make_shared<XO>());                 // Demo
   Menu menu(games);
 
