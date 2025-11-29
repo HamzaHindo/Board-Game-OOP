@@ -179,6 +179,7 @@ protected:
       cout << i + 1 << ". " << options[i] << "\n";
     int choice;
     cin >> choice;
+
     return (choice == 2) ? PlayerType::COMPUTER : PlayerType::HUMAN;
   }
 
@@ -205,7 +206,7 @@ public:
   /**
    * @brief Set up players for the game.
    */
-  virtual Player<T> **setup_players() = 0;
+  virtual Player<T> **setup_players();
 
   /**
    * @brief Create a player object based on input name, symbol, and type.
@@ -292,6 +293,10 @@ public:
     }
   }
 };
+
+template <typename T> Player<T> **UI<T>::setup_players() {
+  return new Player<T> *[2];
+}
 
 //-----------------------------------------------------
 #endif // _BOARDGAME_CLASSES_H
