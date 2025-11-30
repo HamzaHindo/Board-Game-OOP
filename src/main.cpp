@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file XO_Demo.cpp
  * @brief Entry point for the FCAI X-O (Tic-Tac-Toe) game.
  *
@@ -18,6 +18,7 @@
 #include "SUS Game/SUS_Game.h"
 #include "XO Game/XO_Classes.h"
 #include "word_TicTacToe/word_tic_tac_toe.h"
+﻿#include "DiamondTicTacToe.h"
 int main() {
 
 	cin.exceptions(std::ios::failbit | std::ios::badbit);
@@ -29,7 +30,8 @@ int main() {
 	games.push_back(std::make_shared<FourInARow>());         // 2
 	games.push_back(std::make_shared<Word_TTT>());           // 4
 	games.push_back(std::make_shared<NumericalTicTacToe>()); // 9
-	games.push_back(std::make_shared<ObstaclesTicTacToe>()); // 10
+	games.push_back(std::make_shared<ObstaclesTicTacToe>());// 10
+	games.push_back(std::make_shared<DiamondTicTacToe>());   // 11
 	games.push_back(std::make_shared<XO>());                 // Demo
 	Menu menu(games);
 
