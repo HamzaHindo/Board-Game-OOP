@@ -19,6 +19,7 @@
 #include "XO Game/XO_Classes.h"
 #include "word_TicTacToe/word_tic_tac_toe.h"
 ﻿#include "DiamondTicTacToe.h"
+#include "InfinityTicTacToe.h"
 int main() {
 
 	cin.exceptions(std::ios::failbit | std::ios::badbit);
@@ -32,7 +33,8 @@ int main() {
 	games.push_back(std::make_shared<NumericalTicTacToe>()); // 9
 	games.push_back(std::make_shared<ObstaclesTicTacToe>());// 10
 	games.push_back(std::make_shared<DiamondTicTacToe>());   // 11
-	games.push_back(std::make_shared<XO>());                 // Demo
+	games.push_back(std::make_shared<XO>()); // Demo
+	games.push_back(std::make_shared<InfinityTicTacToe>());
 	Menu menu(games);
 
 	menu.runMenuLoop();
