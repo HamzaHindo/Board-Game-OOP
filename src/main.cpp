@@ -12,34 +12,34 @@
 #include <memory> // Required for unique_ptr
 #include <vector> // Required for vector
 
-#include "FourInARow/FourInARow.h"
+#include "DiamondTicTacToe_Ai/DiamondTicTacToe.h"
+#include "FourInARow_Ai/FourInARow.h"
+#include "Infinity Tic-Tac-Toe/InfinityTicTacToe.h"
 #include "Numerical_TicTacToe/Numerical_TicTacToe.h"
-#include "ObstacleTicTacToe/ObstaclesTicTacToe.h"
+#include "ObstaclesTicTacToe/ObstaclesTicTacToe.h"
 #include "SUS Game/SUS_Game.h"
 #include "XO Game/XO_Classes.h"
 #include "word_TicTacToe/word_tic_tac_toe.h"
-﻿#include "DiamondTicTacToe.h"
-#include "InfinityTicTacToe.h"
 int main() {
 
-	cin.exceptions(std::ios::failbit | std::ios::badbit);
-	srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
+  cin.exceptions(std::ios::failbit | std::ios::badbit);
+  srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
 
-	std::vector<std::shared_ptr<IGame>> games;
+  std::vector<std::shared_ptr<IGame>> games;
 
-	games.push_back(std::make_shared<SUS>());                // 1
-	games.push_back(std::make_shared<FourInARow>());         // 2
-	games.push_back(std::make_shared<Word_TTT>());           // 4
-	games.push_back(std::make_shared<NumericalTicTacToe>()); // 9
-	games.push_back(std::make_shared<ObstaclesTicTacToe>());// 10
-	games.push_back(std::make_shared<DiamondTicTacToe>());   // 11
-	games.push_back(std::make_shared<XO>()); // Demo
-	games.push_back(std::make_shared<InfinityTicTacToe>());
-	Menu menu(games);
+  games.push_back(std::make_shared<SUS>());                // 1
+  games.push_back(std::make_shared<FourInARow>());         // 2
+  games.push_back(std::make_shared<Word_TTT>());           // 4
+  games.push_back(std::make_shared<NumericalTicTacToe>()); // 9
+  games.push_back(std::make_shared<ObstaclesTicTacToe>()); // 10
+  games.push_back(std::make_shared<DiamondTicTacToe>());   // 11
+  games.push_back(std::make_shared<XO>());                 // Demo
+  games.push_back(std::make_shared<InfinityTicTacToe>());
+  Menu menu(games);
 
-	menu.runMenuLoop();
+  menu.runMenuLoop();
 
-	return 0; // Exit successfully
+  return 0; // Exit successfully
 }
 
 // =====================================================================

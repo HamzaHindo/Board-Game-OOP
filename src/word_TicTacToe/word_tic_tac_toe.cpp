@@ -1,6 +1,5 @@
 #include "word_tic_tac_toe.h"
-#include <cctype> // for toupper()
-#include <cstdio>
+#include <cctype>
 #include <exception>
 #include <fstream>
 #include <iostream>
