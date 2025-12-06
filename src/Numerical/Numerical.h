@@ -1,5 +1,5 @@
-#ifndef NUMERICAL_TICTACTOE_H
-#define NUMERICAL_TICTACTOE_H
+#ifndef NUMERICAL_H
+#define NUMERICAL_H
 
 #include "BoardGame_Classes.h"
 #include "IGame.h"
@@ -40,14 +40,14 @@ private:
   bool is_valid_number(int number, bool is_player1) const;
 };
 
-class NumericalTicTacToe : public IGame {
+class Numerical : public IGame {
 private:
   Numerical_UI *ui;
   Numerical_Board *board;
 
 public:
-  NumericalTicTacToe();
-  ~NumericalTicTacToe();
+  Numerical();
+  ~Numerical();
   void runGame() override;
   std::string getName() const override;
   std::string getDesc() const override;

@@ -1,4 +1,4 @@
-#include "Numerical_TicTacToe.h"
+#include "Numerical.h"
 #include <iostream>
 
 using namespace std;
@@ -192,17 +192,17 @@ Move<int> *Numerical_UI::get_move(Player<int> *player) {
   return new Move<int>(-1, -1, 0);
 }
 
-NumericalTicTacToe::NumericalTicTacToe() {
+Numerical::Numerical() {
   ui = new Numerical_UI();
   board = new Numerical_Board();
 }
 
-NumericalTicTacToe::~NumericalTicTacToe() {
+Numerical::~Numerical() {
   delete board;
   delete ui;
 }
 
-void NumericalTicTacToe::runGame() {
+void Numerical::runGame() {
 
   descripe();
 
@@ -239,11 +239,9 @@ void NumericalTicTacToe::runGame() {
   delete[] players;
 }
 
-std::string NumericalTicTacToe::getName() const {
-  return "Numerical Tic-Tac-Toe";
-}
+std::string Numerical::getName() const { return "Numerical Tic-Tac-Toe"; }
 
-std::string NumericalTicTacToe::getDesc() const {
+std::string Numerical::getDesc() const {
   return "Numerical Tic-Tac-Toe - A mathematical challenge!\n"
          "Player 1 uses odd numbers (1, 3, 5, 7, 9)\n"
          "Player 2 uses even numbers (2, 4, 6, 8)\n"
@@ -252,9 +250,9 @@ std::string NumericalTicTacToe::getDesc() const {
          "required!";
 }
 
-std::pair<int, int> NumericalTicTacToe::getBoardSize() const { return {3, 3}; }
+std::pair<int, int> Numerical::getBoardSize() const { return {3, 3}; }
 
-void NumericalTicTacToe::descripe() const {
+void Numerical::descripe() const {
   std::cout << "\n========================================\n";
   std::cout << getDesc() << "\n";
   std::cout << "Board Size: (" << getBoardSize().first << ", "

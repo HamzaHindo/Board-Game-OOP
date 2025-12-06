@@ -1,5 +1,5 @@
 
-#include "SUS_Game.h"
+#include "SUS.h"
 #include <cstdlib>
 #include <ctime>
 

@@ -9,7 +9,6 @@ using namespace std;
 class Pyramid_Board : public Board<char> {
 private:
   char blank_symbol = '.';
-  vector<vector<char>> board;
 
 public:
   Pyramid_Board();

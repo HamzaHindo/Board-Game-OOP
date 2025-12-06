@@ -11,9 +11,9 @@
 
 using namespace std;
 
-class Game3_Board : public Board<char> {
+class Five_Board : public Board<char> {
 public:
-  Game3_Board() : Board<char>(5, 5) {
+  Five_Board() : Board<char>(5, 5) {
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 5; j++) {
         this->board[i][j] = 0;
@@ -133,9 +133,9 @@ public:
   }
 };
 
-class Game3_Random_Player : public Player<char> {
+class Five_Random_Player : public Player<char> {
 public:
-  Game3_Random_Player(char symbol)
+  Five_Random_Player(char symbol)
       : Player<char>("Random Computer", symbol, PlayerType::RANDOM) {
     srand(static_cast<unsigned int>(time(0)));
   }
@@ -151,9 +151,9 @@ public:
   }
 };
 
-class Game3_UI : public UI<char> {
+class Five_UI : public UI<char> {
 public:
-  Game3_UI()
+  Five_UI()
       : UI<char>(
             "Welcome to 5x5 Tic Tac Toe!\n"
             "Players alternate placing marks on a 5x5 grid.\n"
@@ -163,8 +163,8 @@ public:
 
   Move<char> *get_move(Player<char> *player) override {
     if (player->get_type() == PlayerType::RANDOM) {
-      Game3_Random_Player *comp_player =
-          dynamic_cast<Game3_Random_Player *>(player);
+      Five_Random_Player *comp_player =
+          dynamic_cast<Five_Random_Player *>(player);
       if (comp_player) {
         this->display_message(player->get_name() + " is making a move...");
         return comp_player->get_move();
@@ -182,20 +182,20 @@ public:
   Player<char> *create_player(string &name, char symbol,
                               PlayerType type) override {
     if (type == PlayerType::COMPUTER || type == PlayerType::RANDOM) {
-      return new Game3_Random_Player(symbol);
+      return new Five_Random_Player(symbol);
     }
     return new Player<char>(name, symbol, PlayerType::HUMAN);
   }
 };
 
-class Game3 : public IGame {
+class Five : public IGame {
 private:
-  Game3_UI *ui;
-  Game3_Board *board;
+  Five_UI *ui;
+  Five_Board *board;
 
 public:
-  Game3();
-  ~Game3();
+  Five();
+  ~Five();
   void runGame() override;
   std::string getName() const override;
   std::string getDesc() const override;

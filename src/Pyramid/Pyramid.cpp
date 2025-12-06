@@ -1,8 +1,9 @@
 
 //--------------------------------------- IMPLEMENTATION
 
-#include "Pyramid_TicTacToe.h"
+#include "Pyramid.h"
 #include <cctype>
+#include <iomanip>
 #include <iostream>
 
 using namespace std;
@@ -11,10 +12,9 @@ using namespace std;
 
 Pyramid_Board::Pyramid_Board() : Board(3, 5) {
   // Initialize all cells with blank_symbol
-
   board.resize(3);
   for (int i = 0; i < 3; i++) {
-    board.resize(2 * i + 1);
+    board[i].resize(2 * i + 1);
     for (int j = 0; j < 2 * i + 1; j++) {
       board[i][j] = blank_symbol;
     }
@@ -26,8 +26,8 @@ bool Pyramid_Board::update_board(Move<char> *move) {
   int y = move->get_y();
   char mark = move->get_symbol();
 
-  // Validate move and apply if valid
-  if (!(x < 0 || x >= rows || y < 0 || y >= columns) &&
+  y = y - (2 - x);
+  if (!(x < 0 || x >= board.size() || y < 0 || y >= board[x].size()) &&
       (board[x][y] == blank_symbol || mark == 0)) {
 
     if (mark == 0) { // Undo move
@@ -43,26 +43,20 @@ bool Pyramid_Board::update_board(Move<char> *move) {
 }
 
 bool Pyramid_Board::is_win(Player<char> *player) {
-  const char sym = player->get_symbol();
-
   auto all_equal = [&](char a, char b, char c) {
     return a == b && b == c && a != blank_symbol;
   };
-
-  // Check rows and columns
-  for (int i = 0; i < rows; ++i) {
-    if ((all_equal(board[i][0], board[i][1], board[i][2]) &&
-         board[i][0] == sym) ||
-        (all_equal(board[0][i], board[1][i], board[2][i]) &&
-         board[0][i] == sym))
-      return true;
-  }
-
-  // Check diagonals
-  if ((all_equal(board[0][0], board[1][1], board[2][2]) &&
-       board[1][1] == sym) ||
-      (all_equal(board[0][2], board[1][1], board[2][0]) && board[1][1] == sym))
+  if (all_equal(board[0][0], board[1][0], board[2][0]) ||
+      all_equal(board[0][0], board[1][2], board[2][4]) ||
+      all_equal(board[0][0], board[1][1], board[2][2]))
     return true;
+
+  for (int i = 1; i < 3; i++) {
+    for (int j = 0; j < board[i].size() - 2; j++) {
+      if (all_equal(board[i][j], board[i][j + 1], board[i][j + 2]))
+        return true;
+    }
+  }
 
   return false;
 }
@@ -94,19 +88,34 @@ void Pyramid_UI::display_board_matrix(
     return;
 
   int rows = matrix.size();
-  int cols = matrix[0].size();
+  int max_cells = 2 * (rows - 1) + 1; // number of cells in the last row
+  int total_width =
+      max_cells * (cell_width + 2) + 1; // total width for centering
 
-  cout << "\n    ";
-  for (int j = 0; j < cols; ++j)
+  // Print column headers
+  cout << "\n   ";
+  for (int j = 0; j < max_cells; ++j) {
     cout << setw(cell_width + 1) << j;
-  cout << "\n   " << string((cell_width + 2) * cols, '-') << "\n";
-
-  for (int i = 0; i < matrix.size(); ++i) {
-    cout << setw(2) << i << " |";
-    for (int j = 0; j < matrix[i].size(); ++j)
-      cout << setw(cell_width) << matrix[i][j] << " |";
-    cout << "\n   " << string((cell_width + 2) * cols, '-') << "\n";
   }
+  cout << "\n   " << string(total_width, '-') << "\n";
+
+  for (int i = 0; i < rows; ++i) {
+    int cells_in_row = 2 * i + 1;
+    int leading_spaces = (max_cells - cells_in_row) / 2;
+
+    cout << setw(2) << i << " ";
+    // Print leading spaces for centering
+    cout << string(leading_spaces * (cell_width + 1), ' ');
+
+    cout << "|";
+
+    for (int j = 0; j < cells_in_row; ++j) {
+      cout << setw(cell_width) << matrix[i][j] << " |";
+    }
+
+    cout << "\n   " << string(total_width, '-') << "\n";
+  }
+
   cout << endl;
 }
 
@@ -159,16 +168,18 @@ void Pyramid::runGame() {
   delete[] players;
 }
 
-std::string Pyramid::getName() const { return "Tic Tac Toe"; }
+std::string Pyramid::getName() const { return "Pyramid Tic Tac Toe"; }
 
 std::string Pyramid::getDesc() const {
-  return "Tic Tac Toe Battle - the classic game that tests your mind and quick "
-         "thinking!\nChallenge your friend or play against the computer, and "
-         "try to be the first to line up three symbols in a row.\nCan you "
-         "outsmart your opponent and claim victory?";
+  return "Pyramid Tic Tac Toe - a thrilling twist on the classic game!\n"
+         "Challenge your friend or play against the computer on a "
+         "pyramid-shaped board, "
+         "where each row has more positions than the one above.\n"
+         "Be the first to align three symbols in a row, column, or diagonal "
+         "and claim victory at the peak of the pyramid!";
 }
 
-std::pair<int, int> Pyramid::getBoardSize() const { return {3, 3}; }
+std::pair<int, int> Pyramid::getBoardSize() const { return {3, 5}; }
 
 void Pyramid::descripe() const {
   std::cout << getDesc() << '\n';

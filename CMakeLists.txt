@@ -21,4 +21,4 @@ add_executable(BoardGames ${SOURCES})
 # target_compile_options(BoardGames PRIVATE -Wall -Wextra)  # GCC/Clang
 
 # Copy dic.txt from src/Word_Tic_Tac_Toe to build directory
-file(COPY ${CMAKE_SOURCE_DIR}/src/word_TicTacToe/dic.txt DESTINATION ${CMAKE_BINARY_DIR})
+file(COPY ${CMAKE_SOURCE_DIR}/src/word/dic.txt DESTINATION ${CMAKE_BINARY_DIR})

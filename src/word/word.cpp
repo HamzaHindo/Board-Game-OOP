@@ -1,4 +1,4 @@
-#include "word_tic_tac_toe.h"
+#include "word.h"
 #include <cctype>
 #include <exception>
 #include <fstream>
@@ -8,14 +8,14 @@
 
 using namespace std;
 
-Word_TTT_Board::Word_TTT_Board() : Board(3, 3) {
+Word_Board::Word_Board() : Board(3, 3) {
   // Initialize all cells with blank_symbol
   for (auto &row : board)
     for (auto &cell : row)
       cell = blank_symbol;
 }
 
-bool Word_TTT_Board::update_board(Move<char> *move) {
+bool Word_Board::update_board(Move<char> *move) {
   int x = move->get_x();
   int y = move->get_y();
   char mark = move->get_symbol();
@@ -36,7 +36,7 @@ bool Word_TTT_Board::update_board(Move<char> *move) {
   return false;
 }
 
-bool Word_TTT_Board::is_win(Player<char> *player) {
+bool Word_Board::is_win(Player<char> *player) {
   const char sym = player->get_symbol();
 
   string filename = "dic.txt";
@@ -66,19 +66,19 @@ bool Word_TTT_Board::is_win(Player<char> *player) {
   }
   return false;
 }
-bool Word_TTT_Board::is_draw(Player<char> *player) {
+bool Word_Board::is_draw(Player<char> *player) {
   return (n_moves == 9 && !is_win(player));
 }
 
-bool Word_TTT_Board::game_is_over(Player<char> *player) {
+bool Word_Board::game_is_over(Player<char> *player) {
   return is_win(player) || is_draw(player);
 }
 
-//--------------------------------------- Word_TTT_UI Implementation
+//--------------------------------------- Word_UI Implementation
 
-Word_TTT_UI::Word_TTT_UI() : UI<char>(3) {}
+Word_UI::Word_UI() : UI<char>(3) {}
 
-Player<char> **Word_TTT_UI::setup_players() {
+Player<char> **Word_UI::setup_players() {
   Player<char> **players = new Player<char> *[2];
   vector<string> type_options = {"Human", "Computer"};
 
@@ -93,8 +93,8 @@ Player<char> **Word_TTT_UI::setup_players() {
   return players;
 }
 
-Player<char> *Word_TTT_UI::create_player(string &name, char symbol,
-                                         PlayerType type) {
+Player<char> *Word_UI::create_player(string &name, char symbol,
+                                     PlayerType type) {
   // Create player based on type
   cout << "Creating " << (type == PlayerType::HUMAN ? "human" : "computer")
        << " player: " << name << " (" << symbol << ")\n";
@@ -102,7 +102,7 @@ Player<char> *Word_TTT_UI::create_player(string &name, char symbol,
   return new Player<char>(name, symbol, type);
 }
 
-Move<char> *Word_TTT_UI::get_move(Player<char> *player) {
+Move<char> *Word_UI::get_move(Player<char> *player) {
   int x, y;
   char c;
 
@@ -141,14 +141,14 @@ Move<char> *Word_TTT_UI::get_move(Player<char> *player) {
   return new Move<char>(x, y, c);
 }
 
-Word_TTT::Word_TTT() {}
+Word::Word() {}
 
-Word_TTT::~Word_TTT() {
+Word::~Word() {
   delete board;
   delete ui;
 }
 
-void Word_TTT::runGame() {
+void Word::runGame() {
 
   descripe();
   Player<char> **players = ui->setup_players();
@@ -163,9 +163,9 @@ void Word_TTT::runGame() {
   delete[] players;
 }
 
-std::string Word_TTT::getName() const { return "Word Tic Tac Toe"; }
+std::string Word::getName() const { return "Word Tic Tac Toe"; }
 
-std::string Word_TTT::getDesc() const {
+std::string Word::getDesc() const {
   return "A fresh twist on the classic Tic-Tac-Toe! Instead of Xs and Os, "
          "players compete by forming words on the grid. Each turn, a player "
          "chooses a word from a predefined dictionary (dic.txt), like ADD or "
@@ -174,9 +174,9 @@ std::string Word_TTT::getDesc() const {
          "with an added challenge of vocabulary and strategy.";
 }
 
-std::pair<int, int> Word_TTT::getBoardSize() const { return {3, 3}; }
+std::pair<int, int> Word::getBoardSize() const { return {3, 3}; }
 
-void Word_TTT::descripe() const {
+void Word::descripe() const {
   std::cout << getDesc() << '\n';
   std::cout << "Board Size: ( " << getBoardSize().first << ", "
             << getBoardSize().second << " ).\n\n";

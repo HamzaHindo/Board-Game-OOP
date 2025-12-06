@@ -1,4 +1,4 @@
-#include "Misere_Tic_Tac_Toe.h"
+#include "Misere.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>

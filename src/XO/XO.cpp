@@ -1,6 +1,6 @@
 //--------------------------------------- IMPLEMENTATION
 
-#include "XO_Classes.h"
+#include "XO.h"
 #include <cctype> // for toupper()
 #include <iomanip>
 #include <iostream>

@@ -12,15 +12,21 @@
 #include <memory> // Required for unique_ptr
 #include <vector> // Required for vector
 
-#include "DiamondTicTacToe_Ai/DiamondTicTacToe.h"
-#include "FourInARow_Ai/FourInARow.h"
-#include "Infinity Tic-Tac-Toe/InfinityTicTacToe.h"
-#include "Numerical_TicTacToe/Numerical_TicTacToe.h"
-#include "ObstaclesTicTacToe/ObstaclesTicTacToe.h"
-#include "Pyramid_TicTacToe/Pyramid_TicTacToe.h"
-#include "SUS Game/SUS_Game.h"
-#include "XO Game/XO_Classes.h"
-#include "word_TicTacToe/word_tic_tac_toe.h"
+#include "Infinity/Infinity.h"
+#include "Memory/Memory.h"
+#include "Numerical/Numerical.h"
+#include "Obstacles/Obstacles.h"
+#include "Pyramid/Pyramid.h"
+#include "SUS/SUS.h"
+#include "XO/XO.h"
+#include "a_Diamond/DiamondTicTacToe.h"
+#include "a_FourInARow/FourInARow.h"
+#include "a_Misere/Misere.h"
+#include "five/five.h"
+#include "word/word.h"
+
+#include <iostream>
+using namespace std;
 int main() {
 
   cin.exceptions(std::ios::failbit | std::ios::badbit);
@@ -28,15 +34,23 @@ int main() {
 
   std::vector<std::shared_ptr<IGame>> games;
 
-  games.push_back(std::make_shared<SUS>());                // 1
-  games.push_back(std::make_shared<FourInARow>());         // 2
-  games.push_back(std::make_shared<Word_TTT>());           // 4
-  games.push_back(std::make_shared<NumericalTicTacToe>()); // 9
-  games.push_back(std::make_shared<ObstaclesTicTacToe>()); // 10
-  games.push_back(std::make_shared<DiamondTicTacToe>());   // 11
-  games.push_back(std::make_shared<XO>());                 // Demo
-  games.push_back(std::make_shared<InfinityTicTacToe>());
+  games.push_back(std::make_shared<SUS>());        // 1
+  games.push_back(std::make_shared<FourInARow>()); // 2
+  games.push_back(std::make_shared<Five>());
+  games.push_back(std::make_shared<Word>()); // 4
+  games.push_back(std::make_shared<Misere>());
+  games.push_back(std::make_shared<DiamondTicTacToe>()); // 11
+  // games.push_back(std::make_shared<Four>());
   games.push_back(std::make_shared<Pyramid>());
+
+  ////////////////// Group Games \\\\\\\\\\\\\\\\\\\\\\\
+
+  games.push_back(std::make_shared<Numerical>()); // 9
+  games.push_back(std::make_shared<Obstacles>()); // 10
+  games.push_back(std::make_shared<Infinity>());
+  // games.push_back(std::make_shared<Ultimate>());
+  // games.push_back(std::make_shared<Memory>());
+  games.push_back(std::make_shared<XO>()); // Demo
   Menu menu(games);
 
   menu.runMenuLoop();
