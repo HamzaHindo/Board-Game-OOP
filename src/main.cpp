@@ -17,6 +17,7 @@
 #include "Infinity Tic-Tac-Toe/InfinityTicTacToe.h"
 #include "Numerical_TicTacToe/Numerical_TicTacToe.h"
 #include "ObstaclesTicTacToe/ObstaclesTicTacToe.h"
+#include "Pyramid_TicTacToe/Pyramid_TicTacToe.h"
 #include "SUS Game/SUS_Game.h"
 #include "XO Game/XO_Classes.h"
 #include "word_TicTacToe/word_tic_tac_toe.h"
@@ -35,6 +36,7 @@ int main() {
   games.push_back(std::make_shared<DiamondTicTacToe>());   // 11
   games.push_back(std::make_shared<XO>());                 // Demo
   games.push_back(std::make_shared<InfinityTicTacToe>());
+  games.push_back(std::make_shared<Pyramid>());
   Menu menu(games);
 
   menu.runMenuLoop();
