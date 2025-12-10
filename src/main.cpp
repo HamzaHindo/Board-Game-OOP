@@ -10,6 +10,7 @@
 #include "Obstacles/Obstacles.h"
 #include "Pyramid/Pyramid.h"
 #include "SUS/SUS.h"
+#include "Ultimate/Ultimate.h"
 #include "XO/XO.h"
 #include "a_Diamond/DiamondTicTacToe.h"
 #include "a_FourInARow/FourInARow.h"
@@ -42,7 +43,7 @@ int main() {
   games.push_back(std::make_shared<Numerical>()); // 9
   games.push_back(std::make_shared<Obstacles>()); // 10
   games.push_back(std::make_shared<Infinity>());  // 11
-  // games.push_back(std::make_shared<Ultimate>());      // 12
+  games.push_back(std::make_shared<Ultimate>());  // 12
   // games.push_back(std::make_shared<Memory>());        // 13
   games.push_back(std::make_shared<XO>()); // Demo
   Menu menu(games);
