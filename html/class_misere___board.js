@@ -1,0 +1,11 @@
+var class_misere___board =
+[
+    [ "Misere_Board", "class_misere___board.html#af98de28668fd6c3a9b6d6b1da82c643e", null ],
+    [ "game_is_over", "class_misere___board.html#afcca94e613d7d43fac5f6fe841d1d760", null ],
+    [ "has_three_in_row", "class_misere___board.html#a5e4610399ab035f9745849daec291053", null ],
+    [ "is_draw", "class_misere___board.html#aab74b353342b36b268bd2c46f5c788f9", null ],
+    [ "is_lose", "class_misere___board.html#a186fb7b780c5d17db6919b352dcb3194", null ],
+    [ "is_win", "class_misere___board.html#aea6c6a5249f718caa00e52219dd90b14", null ],
+    [ "undo_move", "class_misere___board.html#ac997222918607ed0ba9398b19e2f7217", null ],
+    [ "update_board", "class_misere___board.html#a32c93d676416311b19754f60b1468450", null ]
+];
