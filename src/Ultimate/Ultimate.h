@@ -9,15 +9,19 @@
 
 #include "BoardGame_Classes.h"
 #include "IGame.h"
+#include "Result.h"
 using namespace std;
 
 class Ultimate_Board : public Board<char> {
 private:
   char blank_symbol =
       '.'; ///< Character used to represent an empty cell on the board.
+  int currentSubGame[2] = {0, 0};
+  Result_Board *resultBoardptr = new Result_Board;
 
 public:
   Ultimate_Board();
+  ~Ultimate_Board() { delete resultBoardptr; }
 
   bool update_board(Move<char> *move);
 
@@ -28,25 +32,25 @@ public:
   bool is_draw(Player<char> *player);
 
   bool game_is_over(Player<char> *player);
+  Result_Board *getResultPtr() { return resultBoardptr; }
 };
 
 class Ultimate_UI : public UI<char> {
-
-  vector<vector<char>> innerMatrix;
+  Result_UI *resultUIptr = new Result_UI;
 
 public:
   Ultimate_UI();
 
-  ~Ultimate_UI() {};
+  ~Ultimate_UI() { delete resultUIptr; }
 
   Player<char> *create_player(string &name, char symbol, PlayerType type);
   void display_board_matrix(const vector<vector<char>> &matrix) const;
 
-  void replace_sub_board_with_symbol(const Player<char> &player) const;
-
   Player<char> **setup_players();
 
   virtual Move<char> *get_move(Player<char> *player);
+
+  Result_UI *getResultPtr() { return resultUIptr; }
 };
 
 class Ultimate : public IGame {
@@ -54,6 +58,9 @@ class Ultimate : public IGame {
   Ultimate_UI *ui = new Ultimate_UI;
 
   Ultimate_Board *board = new Ultimate_Board;
+
+  Result_UI *resultUI = ui->getResultPtr();
+  Result_Board *resultBoardptr = board->getResultPtr();
 
 public:
   Ultimate();
@@ -63,6 +70,54 @@ public:
   std::string getDesc() const override;
   std::pair<int, int> getBoardSize() const override;
   void descripe() const override;
+};
+
+class Ultimate_Game_Manager : public GameManager<char> {
+  Ultimate_Board *mainBoardptr; ///< game board
+  Result_Board *resultBoardptr; ///< game board
+  Player<char> *players[2];     ///< two players
+  Ultimate_UI *ui;              ///< user interface
+  Result_UI *resultUI;          ///< game Board
+public:
+  Ultimate_Game_Manager(Ultimate_Board *b, Result_Board *rb, Player<char> *p[2],
+                        Ultimate_UI *u, Result_UI *ru)
+      : GameManager(b, p, u) {
+    resultBoardptr = rb;
+    resultUI = ru;
+  }
+
+  void run() {
+    resultUI->display_board_matrix(resultBoardptr->get_board_matrix());
+    ui->display_board_matrix(mainBoardptr->get_board_matrix());
+    Player<char> *currentPlayer = players[0];
+
+    while (true) {
+      for (int i : {0, 1}) {
+        currentPlayer = players[i];
+        Move<char> *move = ui->get_move(currentPlayer);
+
+        while (!mainBoardptr->update_board(move))
+          move = ui->get_move(currentPlayer);
+
+        resultUI->display_board_matrix(resultBoardptr->get_board_matrix());
+        ui->display_board_matrix(mainBoardptr->get_board_matrix());
+
+        mainBoardptr->is_win(currentPlayer);
+        if (resultBoardptr->is_win(currentPlayer)) {
+          ui->display_message(currentPlayer->get_name() + " wins!");
+          return;
+        }
+        if (resultBoardptr->is_lose(currentPlayer)) {
+          ui->display_message(players[1 - i]->get_name() + " wins!");
+          return;
+        }
+        if (resultBoardptr->is_draw(currentPlayer)) {
+          ui->display_message("Draw!");
+          return;
+        }
+      }
+    }
+  }
 };
 
 #endif // Ultimate_CLASSES_H

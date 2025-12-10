@@ -2,6 +2,8 @@
 //--------------------------------------- IMPLEMENTATION
 
 #include "Ultimate.h"
+#include "../XO/XO.h"
+#include "BoardGame_Classes.h"
 #include <cctype> // for toupper()
 #include <iomanip>
 #include <iostream>
@@ -21,6 +23,9 @@ bool Ultimate_Board::update_board(Move<char> *move) {
   int x = move->get_x();
   int y = move->get_y();
   char mark = move->get_symbol();
+
+  currentSubGame[0] = x / 3;
+  currentSubGame[1] = y / 3;
 
   // Validate move and apply if valid
   if (!(x < 0 || x >= rows || y < 0 || y >= columns) &&
@@ -45,36 +50,51 @@ bool Ultimate_Board::is_win(Player<char> *player) {
     return a == b && b == c && a != blank_symbol;
   };
 
+  int x_placement = currentSubGame[0] * 3;
+  int y_placement = currentSubGame[1] * 3;
   // Check rows and columns
-  for (int i = 0; i < rows; ++i) {
-    if ((all_equal(board[i][0], board[i][1], board[i][2]) &&
-         board[i][0] == sym) ||
-        (all_equal(board[0][i], board[1][i], board[2][i]) &&
-         board[0][i] == sym))
-      return true;
+  for (int i = 0; i < 3; ++i) {
+
+    i += x_placement;
+    if ((all_equal(board[i][y_placement], board[i][y_placement + 1],
+                   board[i][y_placement + 2]) &&
+         board[i][0 + y_placement] == sym)) {
+      getResultPtr()->update_board(
+          new Move<char>(currentSubGame[0], currentSubGame[1], sym));
+    }
+
+    i -= x_placement;
+    i += y_placement;
+    if ((all_equal(board[x_placement][i], board[x_placement + 1][i],
+                   board[x_placement + 2][i]) &&
+         board[0 + x_placement][i] == sym))
+      getResultPtr()->update_board(
+          new Move<char>(currentSubGame[0], currentSubGame[1], sym));
+    i -= y_placement;
   }
 
   // Check diagonals
-  if ((all_equal(board[0][0], board[1][1], board[2][2]) &&
-       board[1][1] == sym) ||
-      (all_equal(board[0][2], board[1][1], board[2][0]) && board[1][1] == sym))
-    return true;
+  if ((all_equal(board[0 + x_placement][0 + y_placement],
+                 board[1 + x_placement][1 + y_placement],
+                 board[2 + x_placement][2 + y_placement]) &&
+       board[1 + x_placement][1 + y_placement] == sym) ||
+      (all_equal(board[0 + x_placement][2 + y_placement],
+                 board[1 + x_placement][1 + y_placement],
+                 board[2 + x_placement][0 + y_placement]) &&
+       board[1 + x_placement][1 + y_placement] == sym))
+    getResultPtr()->update_board(
+        new Move<char>(currentSubGame[0], currentSubGame[1], sym));
 
   return false;
 }
 
-bool Ultimate_Board::is_draw(Player<char> *player) {
-  return (n_moves == 9 && !is_win(player));
-}
+bool Ultimate_Board::is_draw(Player<char> *player) { return false; }
 
-bool Ultimate_Board::game_is_over(Player<char> *player) {
-  return is_win(player) || is_draw(player);
-}
+bool Ultimate_Board::game_is_over(Player<char> *player) { return false; }
 
 //--------------------------------------- Ultimate_UI Implementation
 
-Ultimate_UI::Ultimate_UI()
-    : innerMatrix(3, vector<char>(3, '.')), UI<char>(3) {}
+Ultimate_UI::Ultimate_UI() : UI<char>(3) {}
 
 Player<char> *Ultimate_UI::create_player(string &name, char symbol,
                                          PlayerType type) {
@@ -87,27 +107,6 @@ Player<char> *Ultimate_UI::create_player(string &name, char symbol,
 
 void Ultimate_UI::display_board_matrix(
     const vector<vector<char>> &matrix) const {
-
-  if (!innerMatrix.empty() && !innerMatrix[0].empty()) {
-
-    int innerRows = innerMatrix.size();
-    int innerCols = innerMatrix[0].size();
-
-    // Print innerMatrix first
-    cout << "\n    ";
-    for (int j = 0; j < innerCols; ++j)
-      cout << setw(cell_width + 1) << j;
-    cout << "\n   " << string((cell_width + 2) * innerCols, '-') << "\n";
-
-    for (int i = 0; i < innerRows; ++i) {
-      cout << setw(2) << i << " |";
-      for (int j = 0; j < innerCols; ++j)
-        cout << setw(cell_width) << innerMatrix[i][j] << " |";
-      cout << "\n   " << string((cell_width + 2) * innerCols, '-') << "\n";
-    }
-  }
-
-  cout << endl << endl; // space between the two boards
 
   if (matrix.empty() || matrix[0].empty())
     return;
@@ -173,6 +172,8 @@ Ultimate::Ultimate() {}
 Ultimate::~Ultimate() {
   delete board;
   delete ui;
+  delete resultBoardptr;
+  delete resultUI;
 }
 
 void Ultimate::runGame() {
@@ -180,8 +181,9 @@ void Ultimate::runGame() {
   descripe();
   Player<char> **players = ui->setup_players();
   // Create the game manager with the board and the array of players.
-  GameManager<char> game(board, players, ui);
+  Ultimate_Game_Manager game(board, resultBoardptr, players, ui, resultUI);
   // Run the game loop.
+
   game.run();
 
   for (int i = 0; i < 2; ++i) {
