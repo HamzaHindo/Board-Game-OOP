@@ -2,9 +2,11 @@
 //--------------------------------------- IMPLEMENTATION
 
 #include "Pyramid.h"
+#include "utils/Input_Utils.h"
 #include <cctype>
 #include <iomanip>
 #include <iostream>
+#include <utility>
 
 using namespace std;
 
@@ -123,7 +125,8 @@ Move<char> *Pyramid_UI::get_move(Player<char> *player) {
   int x, y;
 
   if (player->get_type() == PlayerType::HUMAN) {
-    cout << "\nPlease enter your move x and y (0 to 2): ";
+    Input::getCoordinates("Enter your move (row and coulmn)",
+                          std::make_pair(0, 2), std::make_pair(0, 4));
     cin >> x >> y;
   } else if (player->get_type() == PlayerType::COMPUTER) {
     x = rand() % player->get_board_ptr()->get_rows();
