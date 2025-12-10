@@ -26,7 +26,7 @@ public:
 
 class DiamondGridValidator {
 private:
-	static const int GRID_SIZE = 5;
+	static const int GRID_SIZE = 7;
 
 public:
 	bool is_valid_position(int row, int col) const;

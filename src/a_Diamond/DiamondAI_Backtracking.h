@@ -16,12 +16,12 @@ public:
 
 class BacktrackingAI : public AIStrategy {
 private:
-	const int MAX_DEPTH = 6;
+	const int MAX_DEPTH = 3;
 	vector<pair<int, int>> available_moves;
 
 	void find_available_moves(Diamond_Board* board);
 	pair<int, pair<int, int>> minimax(Diamond_Board* board, int depth, bool is_maximizing,
-		char ai_mark, char opponent_mark);
+		char ai_mark, char opponent_mark, int alpha, int beta);
 	int evaluate_board(Diamond_Board* board, char ai_mark, char opponent_mark);
 	bool is_winning_position(Diamond_Board* board, int row, int col, char mark);
 	bool is_blocking_position(Diamond_Board* board, int row, int col,

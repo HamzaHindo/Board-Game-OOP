@@ -1,63 +1,57 @@
-﻿/**
- * @file XO_Demo.cpp
- * @brief Entry point for the FCAI X-O (Tic-Tac-Toe) game.
- *
- * This file initializes the X-O game by creating the user interface, board, and
- * players. It then launches the game loop via the GameManager class. All
- * dynamically allocated objects are properly deleted at the end.
- */
+﻿
 
-#include "Menu/Menu.h"
+#include "Menu.h"
 #include <limits>
-#include <memory> // Required for unique_ptr
-#include <vector> // Required for vector
+#include <memory> 
+#include <vector> 
 
-#include "Infinity/Infinity.h"
-#include "Memory/Memory.h"
-#include "Numerical/Numerical.h"
-#include "Obstacles/Obstacles.h"
-#include "Pyramid/Pyramid.h"
-#include "SUS/SUS.h"
-#include "XO/XO.h"
-#include "a_Diamond/DiamondTicTacToe.h"
-#include "a_FourInARow/FourInARow.h"
-#include "a_Misere/Misere.h"
-#include "five/five.h"
-#include "word/word.h"
+#include "Infinity.h"
+#include "Memory.h"
+#include "Numerical.h"
+#include "Obstacles.h"
+#include "Pyramid.h"
+#include "SUS.h"
+#include "XO.h"
+#include "DiamondTicTacToe.h"
+#include "Misere.h" 
+#include "FourInARow.h"
+#include "FiveX5TicTacToe.h"
+#include "FourX4TicTacToe.h"
+#include "word.h"
 
 #include <iostream>
 using namespace std;
 int main() {
 
-  cin.exceptions(std::ios::failbit | std::ios::badbit);
-  srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
+	cin.exceptions(std::ios::failbit | std::ios::badbit);
+	srand(static_cast<unsigned int>(time(0)));
 
-  std::vector<std::shared_ptr<IGame>> games;
+	std::vector<std::shared_ptr<IGame>> games;
 
-  ////////////////// Individual Games \\\\\\\\\\\\\\\\\\\\\\\
+	////////////////// Individual Games \\\\\\\\\\\\\\\\\\\\\\\
 
-  games.push_back(std::make_shared<SUS>());              // 1 Youssef
-  games.push_back(std::make_shared<FourInARow>());       // 2 Mohamed
-  games.push_back(std::make_shared<Five>());             // 3 Moatasem
-  games.push_back(std::make_shared<Word>());             // 4 Hamza
-  games.push_back(std::make_shared<Misere>());           // 5 Youssef
-  games.push_back(std::make_shared<DiamondTicTacToe>()); // 6 Mohamed
-  // games.push_back(std::make_shared<Four>());          // 7 Moatasem
-  games.push_back(std::make_shared<Pyramid>()); // 8 Hamza
+	games.push_back(std::make_shared<SUS>());              // 1 Youssef
+	games.push_back(std::make_shared<FourInARow>());       // 2 Mohamed
+	games.push_back(std::make_shared<FiveX5TicTacToe>());        // 3 Moatasem
+	games.push_back(std::make_shared<Word>());             // 4 Hamza
+	games.push_back(std::make_shared<Misere>());           // 5 Youssef
+	games.push_back(std::make_shared<DiamondTicTacToe>()); // 6 Mohamed
+	games.push_back(std::make_shared<FourX4TicTacToe>());        // 7 Moatasem
+	games.push_back(std::make_shared<Pyramid>()); // 8 Hamza
 
-  ////////////////// Group Games \\\\\\\\\\\\\\\\\\\\\\\
+	////////////////// Group Games \\\\\\\\\\\\\\\\\\\\\\\
 
-  games.push_back(std::make_shared<Numerical>()); // 9
-  games.push_back(std::make_shared<Obstacles>()); // 10
-  games.push_back(std::make_shared<Infinity>());  // 11
-  // games.push_back(std::make_shared<Ultimate>());      // 12
-  // games.push_back(std::make_shared<Memory>());        // 13
-  games.push_back(std::make_shared<XO>()); // Demo
-  Menu menu(games);
+	games.push_back(std::make_shared<Numerical>()); // 9
+	games.push_back(std::make_shared<Obstacles>()); // 10
+	games.push_back(std::make_shared<Infinity>());  // 11
+	// games.push_back(std::make_shared<Ultimate>());      // 12
+	// games.push_back(std::make_shared<Memory>());        // 13
+	games.push_back(std::make_shared<XO>()); // Demo
+	Menu menu(games);
 
-  menu.runMenuLoop();
+	menu.runMenuLoop();
 
-  return 0; // Exit successfully
+	return 0;
 }
 
-// =====================================================================
+
