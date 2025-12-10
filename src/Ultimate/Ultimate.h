@@ -82,6 +82,12 @@ public:
   Ultimate_Game_Manager(Ultimate_Board *b, Result_Board *rb, Player<char> *p[2],
                         Ultimate_UI *u, Result_UI *ru)
       : GameManager(b, p, u) {
+    players[0] = p[0];
+    players[1] = p[1];
+    players[0]->set_board_ptr(b);
+    players[1]->set_board_ptr(b);
+    mainBoardptr = b;
+    ui = u;
     resultBoardptr = rb;
     resultUI = ru;
   }
@@ -98,11 +104,11 @@ public:
 
         while (!mainBoardptr->update_board(move))
           move = ui->get_move(currentPlayer);
+        mainBoardptr->is_win(currentPlayer);
 
         resultUI->display_board_matrix(resultBoardptr->get_board_matrix());
         ui->display_board_matrix(mainBoardptr->get_board_matrix());
 
-        mainBoardptr->is_win(currentPlayer);
         if (resultBoardptr->is_win(currentPlayer)) {
           ui->display_message(currentPlayer->get_name() + " wins!");
           return;

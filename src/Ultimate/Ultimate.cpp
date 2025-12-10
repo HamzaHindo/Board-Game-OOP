@@ -171,9 +171,9 @@ Ultimate::Ultimate() {}
 
 Ultimate::~Ultimate() {
   delete board;
-  delete ui;
   delete resultBoardptr;
   delete resultUI;
+  delete ui;
 }
 
 void Ultimate::runGame() {
