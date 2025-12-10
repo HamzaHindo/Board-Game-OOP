@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['is_5fdraw_0',['is_draw',['../class_board.html#a8dbe2a243881986f3e53b45799d377fc',1,'Board::is_draw()'],['../class_x___o___board.html#a2be5f37643e21edbdea2361853a6e953',1,'X_O_Board::is_draw()']]],
-  ['is_5flose_1',['is_lose',['../class_board.html#a207d5f6feb77f81c51d1462f0245890d',1,'Board::is_lose()'],['../class_x___o___board.html#aec0358cc4f109084267b953832478e94',1,'X_O_Board::is_lose()']]],
-  ['is_5fwin_2',['is_win',['../class_board.html#ab316fe3e79677b4617fc3d90d6c48f33',1,'Board::is_win()'],['../class_x___o___board.html#aafb56a8db5bf8352157326a52c06e2e6',1,'X_O_Board::is_win()']]]
+  ['fivex5_5fboard_0',['FiveX5_Board',['../class_five_x5___board.html#a864ec3df3618523c050b39c203c96f23',1,'FiveX5_Board']]],
+  ['fivex5_5fui_1',['FiveX5_UI',['../class_five_x5___u_i.html#a47df9b4d264843bb776b6300ef5c5b14',1,'FiveX5_UI']]],
+  ['fivex5tictactoe_2',['FiveX5TicTacToe',['../class_five_x5_tic_tac_toe.html#ac8e36aeea6cbe7ca302c0c3b3b492803',1,'FiveX5TicTacToe']]],
+  ['fourx4_5fboard_3',['FourX4_Board',['../class_four_x4___board.html#aff681f02348af70b53425599cb2cedfc',1,'FourX4_Board']]],
+  ['fourx4_5fui_4',['FourX4_UI',['../class_four_x4___u_i.html#a34cfea9bbe6c07f2b78179368960b4dc',1,'FourX4_UI']]],
+  ['fourx4tictactoe_5',['FourX4TicTacToe',['../class_four_x4_tic_tac_toe.html#aaf4a51b4c3611f780223d0750b2ab43a',1,'FourX4TicTacToe']]]
 ];

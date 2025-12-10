@@ -1,6 +1,20 @@
 var searchData=
 [
-  ['is_5fdraw_0',['is_draw',['../class_board.html#a8dbe2a243881986f3e53b45799d377fc',1,'Board::is_draw()'],['../class_x___o___board.html#a2be5f37643e21edbdea2361853a6e953',1,'X_O_Board::is_draw()']]],
-  ['is_5flose_1',['is_lose',['../class_board.html#a207d5f6feb77f81c51d1462f0245890d',1,'Board::is_lose()'],['../class_x___o___board.html#aec0358cc4f109084267b953832478e94',1,'X_O_Board::is_lose()']]],
-  ['is_5fwin_2',['is_win',['../class_board.html#ab316fe3e79677b4617fc3d90d6c48f33',1,'Board::is_win()'],['../class_x___o___board.html#aafb56a8db5bf8352157326a52c06e2e6',1,'X_O_Board::is_win()']]]
+  ['fivex5_5fai_0',['FiveX5_AI',['../class_five_x5___a_i.html',1,'']]],
+  ['fivex5_5fboard_1',['FiveX5_Board',['../class_five_x5___board.html',1,'FiveX5_Board'],['../class_five_x5___board.html#a864ec3df3618523c050b39c203c96f23',1,'FiveX5_Board::FiveX5_Board()']]],
+  ['fivex5_5fui_2',['FiveX5_UI',['../class_five_x5___u_i.html',1,'FiveX5_UI'],['../class_five_x5___u_i.html#a47df9b4d264843bb776b6300ef5c5b14',1,'FiveX5_UI::FiveX5_UI()']]],
+  ['fivex5tictactoe_3',['FiveX5TicTacToe',['../class_five_x5_tic_tac_toe.html',1,'FiveX5TicTacToe'],['../class_five_x5_tic_tac_toe.html#ac8e36aeea6cbe7ca302c0c3b3b492803',1,'FiveX5TicTacToe::FiveX5TicTacToe()']]],
+  ['fivex5tictactoe_2eh_4',['FiveX5TicTacToe.h',['../_five_x5_tic_tac_toe_8h.html',1,'']]],
+  ['fourinarow_5',['FourInARow',['../class_four_in_a_row.html',1,'']]],
+  ['fourinarow_2eh_6',['FourInARow.h',['../_four_in_a_row_8h.html',1,'']]],
+  ['fourinarow_5fai_2eh_7',['FourInARow_AI.h',['../_four_in_a_row___a_i_8h.html',1,'']]],
+  ['fourinarow_5fboard_8',['FourInARow_Board',['../class_four_in_a_row___board.html',1,'']]],
+  ['fourinarow_5fui_9',['FourInARow_UI',['../class_four_in_a_row___u_i.html',1,'']]],
+  ['fourx4_5fai_10',['FourX4_AI',['../class_four_x4___a_i.html',1,'']]],
+  ['fourx4_5fboard_11',['FourX4_Board',['../class_four_x4___board.html',1,'FourX4_Board'],['../class_four_x4___board.html#aff681f02348af70b53425599cb2cedfc',1,'FourX4_Board::FourX4_Board()']]],
+  ['fourx4_5fui_12',['FourX4_UI',['../class_four_x4___u_i.html',1,'FourX4_UI'],['../class_four_x4___u_i.html#a34cfea9bbe6c07f2b78179368960b4dc',1,'FourX4_UI::FourX4_UI()']]],
+  ['fourx4tictactoe_13',['FourX4TicTacToe',['../class_four_x4_tic_tac_toe.html',1,'FourX4TicTacToe'],['../class_four_x4_tic_tac_toe.html#aaf4a51b4c3611f780223d0750b2ab43a',1,'FourX4TicTacToe::FourX4TicTacToe()']]],
+  ['fourx4tictactoe_2eh_14',['FourX4TicTacToe.h',['../_four_x4_tic_tac_toe_8h.html',1,'']]],
+  ['from_5fx_15',['from_x',['../struct_token_move.html#af2ceceb71459fe78e8f664e78196d69f',1,'TokenMove']]],
+  ['from_5fy_16',['from_y',['../struct_token_move.html#a07ceee987147621e9064e01191f130ca',1,'TokenMove']]]
 ];

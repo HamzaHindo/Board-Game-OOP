@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['x_5fo_5fboard_0',['X_O_Board',['../class_x___o___board.html',1,'X_O_Board'],['../class_x___o___board.html#aff75cefd426f1e8db38555ed9b59fee8',1,'X_O_Board::X_O_Board()']]],
-  ['xo_5fclasses_2eh_1',['XO_Classes.h',['../_x_o___classes_8h.html',1,'']]],
-  ['xo_5fdemo_2ecpp_2',['XO_Demo.cpp',['../_x_o___demo_8cpp.html',1,'']]],
-  ['xo_5fui_3',['XO_UI',['../class_x_o___u_i.html',1,'XO_UI'],['../class_x_o___u_i.html#a3777235b2b66dc912258a4ee20501ebb',1,'XO_UI::XO_UI()']]]
+  ['place_5fobstacle_0',['place_obstacle',['../class_obstacle_manager.html#ac123bb65c3d68142b69b9f5713e9b9f0',1,'ObstacleManager']]],
+  ['player_1',['Player',['../class_player.html',1,'Player&lt; T &gt;'],['../class_player.html#adb4e803a7ac0356b111b8ca79d766976',1,'Player::Player()']]],
+  ['player_3c_20char_20_3e_2',['Player&lt; char &gt;',['../class_player.html',1,'']]],
+  ['pyramid_3',['Pyramid',['../class_pyramid.html',1,'']]],
+  ['pyramid_2eh_4',['Pyramid.h',['../_pyramid_8h.html',1,'']]],
+  ['pyramid_5fboard_5',['Pyramid_Board',['../class_pyramid___board.html',1,'']]],
+  ['pyramid_5fui_6',['Pyramid_UI',['../class_pyramid___u_i.html',1,'']]]
 ];

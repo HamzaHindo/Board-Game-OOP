@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rows_0',['rows',['../class_board.html#a948d978e3b5fc460559b588f5dee9572',1,'Board']]]
+  ['move_5fnumber_0',['move_number',['../class_timestamped_move.html#a45c0d3604c0f0e56447ef58eb0028ccc',1,'TimestampedMove']]]
 ];

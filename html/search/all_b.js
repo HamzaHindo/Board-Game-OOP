@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['ui_0',['UI',['../class_u_i.html',1,'UI&lt; T &gt;'],['../class_u_i.html#ae50eed41905ca2f8dc103d9bef427fe6',1,'UI::UI()']]],
-  ['ui_3c_20char_20_3e_1',['UI&lt; char &gt;',['../class_u_i.html',1,'']]],
-  ['update_5fboard_2',['update_board',['../class_board.html#a93d9dec601dda58b7e206ccb47633e57',1,'Board::update_board()'],['../class_x___o___board.html#aef2b0da670b2d5dc6333e0e0113f8b3d',1,'X_O_Board::update_board()']]]
+  ['obstaclemanager_0',['ObstacleManager',['../class_obstacle_manager.html',1,'ObstacleManager'],['../class_obstacle_manager.html#ae73b721e46042d86c1f6d9f936de0abd',1,'ObstacleManager::ObstacleManager()']]],
+  ['obstacles_1',['Obstacles',['../class_obstacles.html',1,'Obstacles'],['../class_obstacles.html#a51c7f97c28a251ab75d711b23d9fe8e1',1,'Obstacles::Obstacles()']]],
+  ['obstacles_2eh_2',['Obstacles.h',['../_obstacles_8h.html',1,'']]],
+  ['obstacles_5fboard_3',['Obstacles_Board',['../class_obstacles___board.html',1,'Obstacles_Board'],['../class_obstacles___board.html#ab219a07e9715b32d2ce8dcbacd653447',1,'Obstacles_Board::Obstacles_Board()']]],
+  ['obstacles_5fui_4',['Obstacles_UI',['../class_obstacles___u_i.html',1,'Obstacles_UI'],['../class_obstacles___u_i.html#a0e526cd8d24fd30a388cd363d2ce7e4c',1,'Obstacles_UI::Obstacles_UI()']]]
 ];

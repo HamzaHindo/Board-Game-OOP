@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['_7eboard_0',['~Board',['../class_board.html#a138a6378af669dd1ce55dc11217aea48',1,'Board']]],
-  ['_7exo_5fui_1',['~XO_UI',['../class_x_o___u_i.html#a6c58a77a2fa80f73e7076ca4a94fcc8a',1,'XO_UI']]]
+  ['reveal_5fboard_0',['reveal_board',['../class_memory___board.html#af6644902e255793bc4109a9a67956cdd',1,'Memory_Board']]],
+  ['rows_1',['rows',['../class_board.html#a948d978e3b5fc460559b588f5dee9572',1,'Board']]],
+  ['run_2',['run',['../class_game_manager.html#a71f46d5189dac5c773f608cea1b5a203',1,'GameManager']]],
+  ['rungame_3',['runGame',['../class_diamond_tic_tac_toe.html#a460481f493db8481b603474d09d0ae1d',1,'DiamondTicTacToe::runGame()'],['../class_five_x5_tic_tac_toe.html#ac9ced98b1cbbd2f6a0350b816c7776f5',1,'FiveX5TicTacToe::runGame()'],['../class_four_in_a_row.html#a9c088fa5b0bc15b14af37e9e23b4ddd7',1,'FourInARow::runGame()'],['../class_four_x4_tic_tac_toe.html#ab354cb15d8ce96b2a602f6934c460038',1,'FourX4TicTacToe::runGame()'],['../class_i_game.html#afce9a8c62f000a18ace979aa803c7d23',1,'IGame::runGame()'],['../class_infinity.html#a6899fa8c6a549ae153380f72444a9221',1,'Infinity::runGame()'],['../class_memory_tic_tac_toe.html#a3bc03f8f7c74cfa42b9f5f28e38a6cab',1,'MemoryTicTacToe::runGame()'],['../class_misere.html#a3f5ecfa2d09194b6a751d8a889e2f967',1,'Misere::runGame()'],['../class_numerical.html#aa1f141a1038b26702767458099cbdef2',1,'Numerical::runGame()'],['../class_obstacles.html#aa6fe809fdc5785a3fe77df89e793d929',1,'Obstacles::runGame()'],['../class_pyramid.html#a0280a1916434e0992cca3ac1d3c15d45',1,'Pyramid::runGame()'],['../class_s_u_s.html#a3e1ba1937be8a97bd5fe97e68adb625c',1,'SUS::runGame()'],['../class_word.html#a667ed47a472bf3ba6bf1c10506fef72d',1,'Word::runGame()'],['../class_x_o.html#a891b4a1f3a00720fd060a2f862fbd17b',1,'XO::runGame()']]],
+  ['runmenuloop_4',['runMenuLoop',['../class_menu.html#ae83a9b9019aa515599fc604940575ce8',1,'Menu']]]
 ];

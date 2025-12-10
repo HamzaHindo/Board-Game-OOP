@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7eboard_0',['~Board',['../class_board.html#a138a6378af669dd1ce55dc11217aea48',1,'Board']]],
-  ['_7exo_5fui_1',['~XO_UI',['../class_x_o___u_i.html#a6c58a77a2fa80f73e7076ca4a94fcc8a',1,'XO_UI']]]
+  ['place_5fobstacle_0',['place_obstacle',['../class_obstacle_manager.html#ac123bb65c3d68142b69b9f5713e9b9f0',1,'ObstacleManager']]],
+  ['player_1',['Player',['../class_player.html#adb4e803a7ac0356b111b8ca79d766976',1,'Player']]]
 ];
