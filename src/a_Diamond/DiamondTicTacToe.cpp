@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int DiamondGridValidator::SIZE = 5;
+const int DiamondGridValidator::SIZE = 7;
 
 bool DiamondGridValidator::is_in_diamond(int row, int col) const {
 	if (row < 0 || row >= GRID_SIZE || col < 0 || col >= GRID_SIZE)
@@ -22,7 +22,7 @@ bool LineValidator::check_line(int row, int col, int dr, int dc, char mark, int 
 	for (int i = 0; i < length; ++i) {
 		int r = row + i * dr;
 		int c = col + i * dc;
-		if (r < 0 || r >= 5 || c < 0 || c >= 5)
+		if (r < 0 || r >= 7 || c < 0 || c >= 7)
 			return false;
 		if ((*board)[r][c] != mark)
 			return false;
@@ -34,14 +34,14 @@ int LineValidator::count_line_length(int row, int col, int dr, int dc, char mark
 	int length = 1;
 	int r = row + dr;
 	int c = col + dc;
-	while (r >= 0 && r < 5 && c >= 0 && c < 5 && (*board)[r][c] == mark) {
+	while (r >= 0 && r < 7 && c >= 0 && c < 7 && (*board)[r][c] == mark) {
 		length++;
 		r += dr;
 		c += dc;
 	}
 	r = row - dr;
 	c = col - dc;
-	while (r >= 0 && r < 5 && c >= 0 && c < 5 && (*board)[r][c] == mark) {
+	while (r >= 0 && r < 7 && c >= 0 && c < 7 && (*board)[r][c] == mark) {
 		length++;
 		r -= dr;
 		c -= dc;
@@ -59,7 +59,7 @@ bool LineValidator::has_line_of_length(int row, int col, char mark, int length) 
 }
 
 Diamond_Board::Diamond_Board()
-	: Board<char>(5, 5),
+	: Board<char>(7, 7),
 	line_validator(&board),
 	grid_validator() {
 
@@ -177,13 +177,13 @@ bool Diamond_UI::is_valid_input(int row, int col, const Diamond_Board* board) {
 void Diamond_UI::display_board_matrix(const vector<vector<char>>& matrix) const {
 	cout << "\n";
 
-	for (int i = 0; i < 5; ++i) {
-		int spaces_before = abs(2 - i) * 2;
+	for (int i = 0; i < 7; ++i) {
+		int spaces_before = abs(3 - i) * 2;
 		for (int j = 0; j < spaces_before; ++j)
 			cout << " ";
 
-		for (int j = 0; j < 5; ++j) {
-			int center = 2;
+		for (int j = 0; j < 7; ++j) {
+			int center = 3;
 			if (abs(i - center) + abs(j - center) <= center) {
 				cout << matrix[i][j] << " ";
 			}
@@ -201,7 +201,7 @@ Move<char>* Diamond_UI::get_move(Player<char>* player) {
 
 		int row, col;
 		while (true) {
-			cout << "Enter position (row col) [0-4]: ";
+			cout << "Enter position (row col) [0-6]: ";
 			cin >> row >> col;
 			if (is_valid_input(row, col, dia_board))
 				break;
@@ -212,8 +212,8 @@ Move<char>* Diamond_UI::get_move(Player<char>* player) {
 		if (!ai_strategy) {
 			int row, col;
 			do {
-				row = rand() % 5;
-				col = rand() % 5;
+				row = rand() % 7;
+				col = rand() % 7;
 			} while (!dia_board->get_grid_validator().is_valid_position(row, col) ||
 				dia_board->get_board_matrix()[row][col] != '.');
 
@@ -336,14 +336,14 @@ std::string DiamondTicTacToe::getName() const {
 
 std::string DiamondTicTacToe::getDesc() const {
 	return "Diamond Tic-Tac-Toe - Unique Strategy Game!\n"
-		"5x5 diamond-shaped grid\n"
+		"7x7 grid with diamond-shaped valid area\n"
 		"Win by completing BOTH a line of 3 AND a line of 4\n"
 		"Lines must be in different directions!\n"
 		"Lines can share one common mark.";
 }
 
 std::pair<int, int> DiamondTicTacToe::getBoardSize() const {
-	return make_pair(5, 5);
+	return make_pair(7, 7);
 }
 
 void DiamondTicTacToe::descripe() const {

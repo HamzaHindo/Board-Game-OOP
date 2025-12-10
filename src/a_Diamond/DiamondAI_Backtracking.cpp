@@ -2,6 +2,7 @@
 #include "DiamondTicTacToe.h"
 #include <iostream>
 #include <climits>
+#include <algorithm>
 
 using namespace std;
 
@@ -10,8 +11,8 @@ void BacktrackingAI::find_available_moves(Diamond_Board* board) {
 	const auto& grid_validator = board->get_grid_validator();
 	const auto& board_matrix = board->get_board_matrix();
 
-	for (int i = 0; i < 5; ++i) {
-		for (int j = 0; j < 5; ++j) {
+	for (int i = 0; i < 7; ++i) {
+		for (int j = 0; j < 7; ++j) {
 			if (grid_validator.is_valid_position(i, j) && board_matrix[i][j] == '.') {
 				available_moves.push_back({ i, j });
 			}
@@ -65,8 +66,8 @@ int BacktrackingAI::evaluate_board(Diamond_Board* board, char ai_mark, char oppo
 	const auto& grid_validator = board->get_grid_validator();
 	int score = 0;
 
-	for (int i = 0; i < 5; ++i) {
-		for (int j = 0; j < 5; ++j) {
+	for (int i = 0; i < 7; ++i) {
+		for (int j = 0; j < 7; ++j) {
 			if (!grid_validator.is_valid_position(i, j))
 				continue;
 
@@ -87,8 +88,7 @@ int BacktrackingAI::evaluate_board(Diamond_Board* board, char ai_mark, char oppo
 }
 
 pair<int, pair<int, int>> BacktrackingAI::minimax(Diamond_Board* board, int depth,
-	bool is_maximizing, char ai_mark,
-	char opponent_mark) {
+	bool is_maximizing, char ai_mark, char opponent_mark, int alpha, int beta) {
 	char current_mark = is_maximizing ? ai_mark : opponent_mark;
 
 	int best_score = is_maximizing ? INT_MIN : INT_MAX;
@@ -107,7 +107,7 @@ pair<int, pair<int, int>> BacktrackingAI::minimax(Diamond_Board* board, int dept
 
 		board->get_board_matrix()[row][col] = current_mark;
 
-		pair<int, pair<int, int>> result = minimax(board, depth - 1, !is_maximizing, ai_mark, opponent_mark);
+		pair<int, pair<int, int>> result = minimax(board, depth - 1, !is_maximizing, ai_mark, opponent_mark, alpha, beta);
 		int score = result.first;
 
 		board->get_board_matrix()[row][col] = '.';
@@ -116,13 +116,19 @@ pair<int, pair<int, int>> BacktrackingAI::minimax(Diamond_Board* board, int dept
 			if (score > best_score) {
 				best_score = score;
 				best_move = make_pair(row, col);
+				alpha = max(alpha, score);
 			}
 		}
 		else {
 			if (score < best_score) {
 				best_score = score;
 				best_move = make_pair(row, col);
+				beta = min(beta, score);
 			}
+		}
+
+		if (beta <= alpha) {
+			break;
 		}
 	}
 
@@ -132,7 +138,7 @@ pair<int, pair<int, int>> BacktrackingAI::minimax(Diamond_Board* board, int dept
 void BacktrackingAI::selectMove(Diamond_Board* board, char playerMark, int& row, int& col) {
 	char opponent_mark = (playerMark == 'X') ? 'O' : 'X';
 
-	pair<int, pair<int, int>> result = minimax(board, MAX_DEPTH, true, playerMark, opponent_mark);
+	pair<int, pair<int, int>> result = minimax(board, MAX_DEPTH, true, playerMark, opponent_mark, INT_MIN, INT_MAX);
 	pair<int, int> best_move = result.second;
 
 	if (best_move.first == -1 || best_move.second == -1) {
