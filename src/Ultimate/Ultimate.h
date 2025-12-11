@@ -119,7 +119,7 @@ public:
         }
         if (resultBoardptr->is_draw(currentPlayer)) {
           ui->display_message("Draw!");
-          return;
+          return;12
         }
       }
     }
